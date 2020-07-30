@@ -19,6 +19,10 @@ Route::get('prueba', function () {
 	return "Hola esto es una prueba";
 });
 
+Route::get('params/{parametro}', function ($param) {
+	return "Esto es una ruta con parametros que recibio el texto: $param";
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
