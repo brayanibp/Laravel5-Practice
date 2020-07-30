@@ -23,7 +23,7 @@ Route::get('params/{parametro}', function ($param) {
 	return "Esto es una ruta con parametros que recibio el texto: $param";
 });
 
-Route::get('opt/{param?}/{otro?}', function ($param = "Este el parametro por defecto", $otro = 1) {
+Route::get('opt/{param?}/{otro?}', function ($param = "@param 1", $otro = "@param 2") {
 	return "Este es el primer parametro $param, Este es el segundo $otro";
 });
 
