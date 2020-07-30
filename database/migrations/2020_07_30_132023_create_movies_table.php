@@ -19,7 +19,7 @@ class CreateMoviesTable extends Migration {
 			$table->string('cast');
 			$table->string('direction');
 			$table->string('duration');
-			$table->timestamps();
+			$table->timestamps('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 			$table->integer('genre_id')->unsigned();
 			$table->foreign('genre_id')->references('id')->on('genres');
 		});

@@ -16,7 +16,7 @@ class CreateGenresTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('genre');
-			$table->timestamps();
+			$table->timestamps('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 
