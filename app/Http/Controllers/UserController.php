@@ -4,8 +4,8 @@ namespace Cinema\Http\Controllers;
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use Cinema\User;
 
 class UserController extends Controller
 {
@@ -17,7 +17,7 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
-		$users = \Cinema\User::all();
+		$users = User::all();
 		return view('user.index', compact('users'));
 	}
 
@@ -38,7 +38,7 @@ class UserController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		\Cinema\User::create([
+		User::create([
 			'name' => $request['name'],
 			'email' => $request['email'],
 			'password' => bcrypt($request['password']),
@@ -65,7 +65,8 @@ class UserController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::find($id);
+		return view('user.edit', ['user' => $user]);
 	}
 
 	/**

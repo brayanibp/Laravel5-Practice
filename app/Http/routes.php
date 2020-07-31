@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,4 +17,4 @@ Route::get('/', 'FrontController@index');
 Route::get('/contacto', 'FrontController@contacto');
 Route::get('/reviews', 'FrontController@reviews');
 
-Route::resource('/usuario','UserController');
+Route::resource('/usuario', 'UserController');
