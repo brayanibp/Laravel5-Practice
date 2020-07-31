@@ -1,11 +1,14 @@
-<?php namespace Cinema\Http\Controllers;
+<?php
+
+namespace Cinema\Http\Controllers;
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +17,8 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$users = \Cinema\User::all();
+		return view('user.index', compact('users'));
 	}
 
 	/**
@@ -32,9 +36,14 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		\Cinema\User::create([
+			'name' => $request['name'],
+			'email' => $request['email'],
+			'password' => bcrypt($request['password']),
+		]);
+		return redirect('/usuario')->with('message', 'store');
 	}
 
 	/**
@@ -80,5 +89,4 @@ class UserController extends Controller {
 	{
 		//
 	}
-
 }

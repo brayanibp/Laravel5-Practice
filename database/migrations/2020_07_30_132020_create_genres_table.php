@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGenresTable extends Migration {
+class CreateGenresTable extends Migration
+{
 
 	/**
 	 * Run the migrations.
@@ -12,11 +13,10 @@ class CreateGenresTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('genres', function(Blueprint $table)
-		{
+		Schema::create('genres', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('genre');
-			$table->timestamps('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 
@@ -29,5 +29,4 @@ class CreateGenresTable extends Migration {
 	{
 		Schema::drop('genres');
 	}
-
 }

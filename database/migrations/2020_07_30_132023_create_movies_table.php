@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMoviesTable extends Migration {
+class CreateMoviesTable extends Migration
+{
 
 	/**
 	 * Run the migrations.
@@ -12,14 +13,13 @@ class CreateMoviesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('movies', function(Blueprint $table)
-		{
+		Schema::create('movies', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('cast');
 			$table->string('direction');
 			$table->string('duration');
-			$table->timestamps('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 			$table->integer('genre_id')->unsigned();
 			$table->foreign('genre_id')->references('id')->on('genres');
 		});
@@ -34,5 +34,4 @@ class CreateMoviesTable extends Migration {
 	{
 		Schema::drop('movies');
 	}
-
 }
