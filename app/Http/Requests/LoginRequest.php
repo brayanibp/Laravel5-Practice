@@ -1,8 +1,11 @@
-<?php namespace Cinema\Http\Requests;
+<?php
+
+namespace Cinema\Http\Requests;
 
 use Cinema\Http\Requests\Request;
 
-class LoginRequest extends Request {
+class LoginRequest extends Request
+{
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,7 +14,7 @@ class LoginRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -25,5 +28,4 @@ class LoginRequest extends Request {
 			//
 		];
 	}
-
 }

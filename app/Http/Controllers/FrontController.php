@@ -1,11 +1,14 @@
-<?php namespace Cinema\Http\Controllers;
+<?php
+
+namespace Cinema\Http\Controllers;
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class FrontController extends Controller {
+class FrontController extends Controller
+{
 
 	public function index()
 	{
@@ -22,4 +25,8 @@ class FrontController extends Controller {
 		return view('reviews');
 	}
 
+	public function admin()
+	{
+		return view('admin.index');
+	}
 }
