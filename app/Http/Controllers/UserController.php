@@ -8,11 +8,22 @@ use Cinema\Http\Requests\UserUpdateRequest;
 use Cinema\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Cinema\User;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
 use \Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
+	}
+
+	public function find(Route $route)
+	{
+		$this->user = User::find($route->getParameter('usuario'));
+	}
 
 	public function index()
 	{
@@ -27,11 +38,7 @@ class UserController extends Controller
 
 	public function store(UserCreateRequest $request)
 	{
-		User::create([
-			'name' => $request['name'],
-			'email' => $request['email'],
-			'password' => $request['password'],
-		]);
+		User::create($request->all());
 		return redirect('/usuario')->with('message', 'Usuario Registrado Exitosamente.');
 	}
 
@@ -42,15 +49,13 @@ class UserController extends Controller
 
 	public function edit($id)
 	{
-		$user = User::find($id);
-		return view('user.edit', ['user' => $user]);
+		return view('user.edit', ['user' => $this->user]);
 	}
 
 	public function update($id, UserUpdateRequest $request)
 	{
-		$user = User::find($id);
-		$user->fill($request->all());
-		$user->save();
+		$this->user->fill($request->all());
+		$this->user->save();
 
 		Session::flash('message', 'Usuario Editado Exitosamente');
 		return Redirect::to('/usuario');
@@ -59,8 +64,7 @@ class UserController extends Controller
 	public function destroy($id)
 	{
 		// User::destroy($id); // Destruye el elemento eliminando permanentemente el registro.
-		$user = User::find($id);
-		$user->delete(); //Oculta el elemento seteando el campo deleted_at en la base de datos.
+		$this->user->delete(); //Oculta el elemento seteando el campo deleted_at en la base de datos.
 		Session::flash('message', 'Usuario Eliminado Exitosamente');
 		return Redirect::to('/usuario');
 	}
