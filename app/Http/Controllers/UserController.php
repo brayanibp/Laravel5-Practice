@@ -6,6 +6,8 @@ use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Cinema\User;
+use Illuminate\Support\Facades\Redirect;
+use \Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -41,9 +43,9 @@ class UserController extends Controller
 		User::create([
 			'name' => $request['name'],
 			'email' => $request['email'],
-			'password' => bcrypt($request['password']),
+			'password' => $request['password'],
 		]);
-		return redirect('/usuario')->with('message', 'store');
+		return redirect('/usuario')->with('message', 'Usuario Registrado Exitosamente.');
 	}
 
 	/**
@@ -75,9 +77,14 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$user = User::find($id);
+		$user->fill($request->all());
+		$user->save();
+
+		Session::flash('message', 'Usuario Editado Exitosamente');
+		return Redirect::to('/usuario');
 	}
 
 	/**
@@ -88,6 +95,8 @@ class UserController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+		Session::flash('message', 'Usuario Eliminado Exitosamente');
+		return Redirect::to('/usuario');
 	}
 }
