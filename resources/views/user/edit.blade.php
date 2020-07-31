@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+    @include('alerst.request')
     {!! Form::model($user, ['route'=>[ 'usuario.update', $user->id ],'method'=>'PUT']) !!}
         @include('user.forms.usr')
         {!! Form::submit('Actualizar', ['class'=>'btn btn-primary']) !!}
