@@ -21,3 +21,4 @@ Route::get('/admin', 'FrontController@admin');
 Route::resource('/usuario', 'UserController');
 Route::resource('/log', 'LogController');
 Route::get('/logout', 'LogController@logout');
+Route::resource('genero', 'GenderController');
