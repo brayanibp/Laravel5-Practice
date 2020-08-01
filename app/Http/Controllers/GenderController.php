@@ -7,35 +7,37 @@ use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class GenderController extends Controller
 {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	public function __construct()
+	{
+		$this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
+	}
+
+	public function find(Route $route)
+	{
+		$this->genre = Genre::find($route->getParameter('genero'));
+	}
+
+	public function listing()
+	{
+		$genres = Genre::all();
+		return response()->json($genres);
+	}
+
 	public function index()
 	{
 		return view('gender.index');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		return view('gender.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store(Request $request)
 	{
 		Genre::create($request->all());
@@ -46,47 +48,26 @@ class GenderController extends Controller
 		}
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show($id)
 	{
 		//
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
-		//
+		return response()->json($this->genre);
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$this->genre->fill($request->all());
+		$this->genre->save();
+		return response()->json(['message' => 'updated']);
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy($id)
 	{
-		//
+		$this->genre->delete();
+		return response()->json(['message' => 'deleted']);
 	}
 }

@@ -106,7 +106,7 @@
     {!!Html::script('js/sb-admin-2.js')!!}
     
     @section('scripts')
-    @endsection
+    @show
 
 </body>
 

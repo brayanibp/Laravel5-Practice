@@ -19,6 +19,9 @@ Route::get('/reviews', 'FrontController@reviews');
 Route::get('/admin', 'FrontController@admin');
 
 Route::resource('/usuario', 'UserController');
+
+Route::resource('genero', 'GenderController');
+Route::get('generos', 'GenderController@listing');
+
 Route::resource('/log', 'LogController');
 Route::get('/logout', 'LogController@logout');
-Route::resource('genero', 'GenderController');
