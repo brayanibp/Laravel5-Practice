@@ -1,8 +1,11 @@
-<?php namespace Cinema\Http;
+<?php
+
+namespace Cinema\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel {
+class Kernel extends HttpKernel
+{
 
 	/**
 	 * The application's global HTTP middleware stack.
@@ -27,6 +30,6 @@ class Kernel extends HttpKernel {
 		'auth' => 'Cinema\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Cinema\Http\Middleware\RedirectIfAuthenticated',
+		'admin' => 'Cinema\Http\Middleware\Admin',
 	];
-
 }
