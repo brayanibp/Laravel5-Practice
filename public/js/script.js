@@ -16,6 +16,10 @@ $('#register').click(() => {
         },
         success: () => {
             $("#msj-success").fadeIn();
+        },
+        error: (err) => {
+            $("#msj").html(err.responseJSON.genre[0]);
+            $("#msj-error").fadeIn();
         }
     });
 });

@@ -4,6 +4,7 @@ namespace Cinema\Http\Controllers;
 
 use Cinema\Genre;
 use Cinema\Http\Requests;
+use Cinema\Http\Requests\GenreRequest;
 use Cinema\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class GenderController extends Controller
 		return view('gender.create');
 	}
 
-	public function store(Request $request)
+	public function store(GenreRequest $request)
 	{
 		Genre::create($request->all());
 		if ($request->ajax()) {
