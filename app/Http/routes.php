@@ -18,6 +18,7 @@ Route::get('/contacto', 'FrontController@contacto');
 Route::get('/reviews', 'FrontController@reviews');
 Route::get('/admin', 'FrontController@admin');
 
+Route::resource('/mail', 'MailController');
 Route::resource('/usuario', 'UserController');
 
 Route::resource('genero', 'GenderController');
