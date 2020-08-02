@@ -27,9 +27,12 @@ class UserController extends Controller
 		$this->user = User::find($route->getParameter('usuario'));
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
 		$users = User::paginate(10);
+		if ($request->ajax()) {
+			return response()->json(view('user.users', compact('users'))->render());
+		}
 		return view('user.index', compact('users'));
 	}
 
