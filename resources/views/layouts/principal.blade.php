@@ -22,8 +22,8 @@
 			<div class="menu">
 				<ul>
 					<li><a class="active" href="{{URL::to('/')}}"><i class="home"></i></a></li>
-					<li><a href="{{URL::to('/usuario')}}"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
-					<li><a href="{{URL::to('/usuario')}}"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
+					<li><a href="{{URL::to('/reviews')}}"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
+					<li><a href="{{URL::to('/contacto')}}"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
 				</ul>
 			</div>
 		<div class="main">

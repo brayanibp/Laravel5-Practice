@@ -18,7 +18,7 @@ class MovieController extends Controller
 
 	public function __construct()
 	{
-		$this->beforeFilter('@find', ['only' => ['edit', 'update']]);
+		$this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
 	}
 
 	public function find(Route $route)
