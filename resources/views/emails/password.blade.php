@@ -1,1 +1,12 @@
-Click here to reset your password: {{ url('password/reset/'.$token) }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mensaje</title>
+</head>
+<body>
+    </p>Click here to reset your password: {{ url('password/reset/'.$token) }}<p>
+</body>
+</html>
