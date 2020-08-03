@@ -21,6 +21,7 @@ class GenderController extends Controller
 	public function find(Route $route)
 	{
 		$this->genre = Genre::find($route->getParameter('genero'));
+		$this->NotFound($this->genre);
 	}
 
 	public function listing()

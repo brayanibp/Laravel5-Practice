@@ -34,3 +34,5 @@ Route::resource('pelicula', 'MovieController');
 
 Route::resource('/log', 'LogController');
 Route::get('/logout', 'LogController@logout');
+
+Route::get('*', 'Controller@NotFound');

@@ -24,6 +24,7 @@ class MovieController extends Controller
 	public function find(Route $route)
 	{
 		$this->movie = Movie::find($route->parameter('pelicula'));
+		$this->NotFound($this->movie);
 	}
 
 	public function index()
