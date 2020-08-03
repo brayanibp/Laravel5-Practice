@@ -1,7 +1,7 @@
 //Using Jquery
 $('#register').click(() => {
     const genre_value = $('#genre').val();
-    const route = "http://172.17.0.2:8000/genero";
+    const route = "/genero";
     const token = $('#token').val();
 
     $.ajax({

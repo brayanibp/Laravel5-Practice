@@ -2,7 +2,7 @@ $(document).ready(load);
 
 function load() {
     const dataTable = $("#datos");
-    const route = "http://172.17.0.2:8000/generos";
+    const route = "/generos";
     $.ajax({
         url: route,
         type: 'GET',
@@ -25,7 +25,7 @@ function load() {
 }
 
 function remove(btn) {
-    const URL = `http://172.17.0.2:8000/genero/${btn.value}`;
+    const URL = `/genero/${btn.value}`;
     const token = $("#token").val();
     $.ajax({
         url: URL,
@@ -40,7 +40,7 @@ function remove(btn) {
 }
 
 function show(btn) {
-    const URL = `http://172.17.0.2:8000/genero/${btn.value}/edit`;
+    const URL = `/genero/${btn.value}/edit`;
     $.ajax({
         url: URL,
         type: 'GET',
@@ -55,7 +55,7 @@ function show(btn) {
 $("#update").click(function () {
     const id = $("#id").val();
     const genre = $("#genre").val();
-    const URL = `http://172.17.0.2:8000/genero/${id}`;
+    const URL = `/genero/${id}`;
     const token = $("#token").val();
     $.ajax({
         url: URL,

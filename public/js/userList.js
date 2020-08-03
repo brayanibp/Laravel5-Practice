@@ -1,7 +1,7 @@
 $(document).on('click', '.pagination a', (ev) => {
     ev.preventDefault();
     const page = $(ev.target).attr('href').split('page=')[1];
-    const URL = "http://172.17.0.2:8000/usuario/";
+    const URL = "/usuario/";
 
     $.ajax({
         url: URL,
